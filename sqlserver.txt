@@ -1,0 +1,52 @@
+-- Tabella utenti
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT NOT NULL UNIQUE,
+  email TEXT NOT NULL UNIQUE,
+  password TEXT NOT NULL,
+  role TEXT DEFAULT 'user',
+  points INTEGER DEFAULT 0
+);
+
+-- Tabella classifiche
+CREATE TABLE classifications (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  description TEXT
+);
+
+-- Tabella iscrizioni (relazione N:N tra utenti e classifiche)
+CREATE TABLE user_classifications (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  classification_id INTEGER NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (classification_id) REFERENCES classifications(id),
+  UNIQUE(user_id, classification_id) -- evita doppie iscrizioni
+);
+
+-- Tabella statistiche personali
+CREATE TABLE stats (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  classification_id INTEGER NOT NULL,
+  title TEXT NOT NULL,
+  value REAL NOT NULL,
+  category TEXT,
+  date TEXT NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (classification_id) REFERENCES classifications(id)
+);
+
+-- Tabella azioni utente
+CREATE TABLE actions (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  classification_id INTEGER NOT NULL,
+  stat_id INTEGER, -- opzionale, se l'azione è legata a una statistica
+  type TEXT NOT NULL, -- es: 'iscrizione', 'inserimento', 'modifica'
+  timestamp TEXT NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (classification_id) REFERENCES classifications(id),
+  FOREIGN KEY (stat_id) REFERENCES stats(id)
+);

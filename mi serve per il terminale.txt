@@ -1,0 +1,20 @@
+avviare il server: node server.js
+avviare il server con nodemon: npx nodemon server.js
+
+
+aumentare i punti tramite chiamata js:
+    curl -X POST http://localhost:3000/users/4/addPoints \
+     -H "Content-Type: application/json" \
+     -d '{"points":1000}'
+
+
+test di registrazione da Bash:
+    curl -X POST http://localhost:3000/signup \
+     -H "Content-Type: application/json" \
+     -d '{"username":"test","email":"test@example.com","password":"12345"}'
+
+test accesso tramite Bash:
+    curl -X POST http://localhost:3000/login \
+    -H "Content-Type: application/json" \
+    -d '{"identifier":"test","password":"12345"}'
+

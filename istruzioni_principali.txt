@@ -1,0 +1,10 @@
+Nell'applicazione consegnata (cartella social-stats), non è presente la directory "node_modules".
+
+per proseguire aprire il terminale interno alla cartella social-stats.
+all'interno del terminale incollare il seguente comando 'npm install' che grazie al file 'package.json' creera la directory node_modules.
+inseguito lanciare il comando 'node app.js'
+a questo punto il terminale stamperà l'indirizzo da visitare all'interno del browser 'http://localhost:3000' e lavvenuta connessione al database 
+
+all'interno di info_utenti.txt è presente la lista di 3 utenti con accesso user con le relative password e email, e le credenziali dell'unico utente con accesso admin
+
+Infine il link al video richiesto: https://youtu.be/v3YqNwOIP9k

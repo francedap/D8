@@ -8,6 +8,8 @@ L'applicazione è stata migrata da un'architettura multi-pagina a una **Single P
 
 **Totale file non utilizzati: 29 file**
 
+> **Nota:** Questa analisi riguarda solo i file frontend nella cartella `/public`. Tutti i file nella cartella `/src` (backend: controllers, routes, DAO, middleware, config) sono attualmente in uso e NON devono essere rimossi.
+
 ---
 
 ## 📄 File HTML Non Utilizzati (8 file)
@@ -151,7 +153,9 @@ Questi file immagine non sono referenziati in nessun file HTML, CSS o JavaScript
 
 ## ⚠️ Note
 
-Prima di eliminare i file, si consiglia di:
+**Importante:** Questa analisi copre solo i file frontend nella cartella `/public`. La cartella `/src` contiene il backend dell'applicazione (controllers, routes, DAO, middleware, configurazioni) e **tutti i file in essa sono utilizzati e necessari** per il funzionamento dell'applicazione.
+
+Prima di eliminare i file frontend non utilizzati, si consiglia di:
 
 1. Verificare che l'applicazione funzioni correttamente
 2. Creare un backup o un commit separato

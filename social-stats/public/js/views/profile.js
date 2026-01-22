@@ -43,7 +43,7 @@ async function renderProfile() {
                   ⚡ <strong>Livello attuale:</strong> <span id="userLevel"></span><br>
                   💎 <strong>Punti totali:</strong> <span id="userPoints"></span><br>
                   🧮 <strong>Attività totali:</strong> <span id="profileActions"></span><br>
-                  🗂️ <strong>Classifiche iscritte:</strong> <span id="profileClassifications"><br>
+                  🗂️ <strong>Classifiche iscritte:</strong> <span id="profileClassifications"></span><br>
                 </p>
               </div>
             </div>

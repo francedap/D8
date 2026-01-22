@@ -84,7 +84,7 @@ async function loadLeaderboard() {
       data.forEach((user, index) => {
         const row = document.createElement('tr');
         row.innerHTML = `
-          <td><img src="img/${['primo', 'secondo', 'terzo'][index]}.png" class="iconanumero"</td>
+          <td><img src="img/${['primo', 'secondo', 'terzo'][index]}.png" class="iconanumero"></td>
           <td>${user.username}</td>
           <td>Livello ${user.level}</td>
         `;

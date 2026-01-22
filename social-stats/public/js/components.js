@@ -48,12 +48,6 @@ function renderNavbar(isLoggedIn = false) {
               <a class="bottone btn btn-outline-info mx-2" href="#/signup">Sign up</a>
               <a class="bottonelog btn btn-outline-info" href="#/login">Log in</a>
             </div>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-              <span>
-                <img src="img/navbartop.png" alt="Menu" style="height: 30px; width: auto;">
-              </span>
-            </button>
           </div>
         </div>
       </nav>

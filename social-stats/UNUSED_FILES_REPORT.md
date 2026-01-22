@@ -10,7 +10,7 @@ L'applicazione è stata migrata da un'architettura multi-pagina a una **Single P
 
 ---
 
-## 📄 File HTML Non Utilizzati (7 file)
+## 📄 File HTML Non Utilizzati (8 file)
 
 ### Cartella: `/public/old-pages/`
 
@@ -58,7 +58,7 @@ Questi file sono stati sostituiti da moduli equivalenti nella cartella `js/views
 
 ---
 
-## 🖼️ File Immagine Non Utilizzati (~15 file)
+## 🖼️ File Immagine Non Utilizzati (~13 file)
 
 ### Cartella: `/public/img/`
 

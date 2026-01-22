@@ -6,7 +6,7 @@ Questo documento elenca tutti i file che non vengono utilizzati all'interno dell
 
 L'applicazione è stata migrata da un'architettura multi-pagina a una **Single Page Application (SPA)**. Di conseguenza, molti file legacy non sono più utilizzati.
 
-**Totale file non utilizzati: ~30 file**
+**Totale file non utilizzati: 29 file**
 
 ---
 
@@ -160,5 +160,4 @@ Prima di eliminare i file, si consiglia di:
 
 ---
 
-**Data Analisi:** 22 Gennaio 2026  
 **Versione Repository:** D8 - social-stats

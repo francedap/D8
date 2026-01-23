@@ -82,7 +82,7 @@ async function loadUsers() {
         <td>${user.email}</td>
         <td>
           ${user.role}
-          <select class="form-select form-select-sm d-inline-block w-auto ms-2" onchange="changeRole(${user.id}, this.value)">
+          <select class="form-select form-select-sm d-inline-block w-auto ms-2" data-user-id="${user.id}">
             <option value="user" ${user.role === 'user' ? 'selected' : ''}>User</option>
             <option value="admin" ${user.role === 'admin' ? 'selected' : ''}>Admin</option>
           </select>
@@ -90,10 +90,27 @@ async function loadUsers() {
         <td>${user.points}</td>
         <td>${user.level}</td>
         <td>
-          <button class="btn btn-danger btn-sm" onclick="deleteUser(${user.id})">Elimina</button>
+          <button class="btn btn-danger btn-sm" data-user-id="${user.id}">Elimina</button>
         </td>
       `;
       tbody.appendChild(tr);
+      
+      // Attach event listeners programmatically
+      const roleSelect = tr.querySelector('select[data-user-id]');
+      roleSelect.addEventListener('change', (e) => {
+        const userId = parseInt(e.target.dataset.userId, 10);
+        if (!isNaN(userId)) {
+          changeRole(userId, e.target.value);
+        }
+      });
+      
+      const deleteBtn = tr.querySelector('button[data-user-id]');
+      deleteBtn.addEventListener('click', (e) => {
+        const userId = parseInt(e.target.dataset.userId, 10);
+        if (!isNaN(userId)) {
+          deleteUser(userId);
+        }
+      });
     });
   } catch (err) {
     console.error('Errore nel caricamento degli utenti:', err);
@@ -119,16 +136,33 @@ async function changeRole(userId, newRole) {
 
 // Delete user
 async function deleteUser(userId) {
-  if (confirm("Sei sicuro di voler eliminare questo utente?")) {
-    try {
-      const res = await fetch(`/api/users/${userId}`, { method: 'DELETE' });
-      const data = await res.json();
-      alert(data.message);
-      await loadUsers();
-    } catch (err) {
-      console.error('Errore nell\'eliminazione dell\'utente:', err);
-      alert('Errore nell\'eliminazione dell\'utente');
+  try {
+    // Fetch current users to get user details
+    const res = await fetch('/api/users');
+    const data = await res.json();
+    const user = data.users.find(u => u.id === userId);
+    
+    if (!user) {
+      alert('Utente non trovato');
+      return;
     }
+    
+    // Enhanced confirmation with user details
+    const confirmMsg = `Sei sicuro di voler eliminare questo utente?\n\n` +
+                       `Username: ${user.username}\n` +
+                       `Email: ${user.email}\n` +
+                       `Ruolo: ${user.role}\n\n` +
+                       `Questa azione non può essere annullata.`;
+    
+    if (confirm(confirmMsg)) {
+      const deleteRes = await fetch(`/api/users/${userId}`, { method: 'DELETE' });
+      const deleteData = await deleteRes.json();
+      alert(deleteData.message);
+      await loadUsers();
+    }
+  } catch (err) {
+    console.error('Errore nell\'eliminazione dell\'utente:', err);
+    alert('Errore nell\'eliminazione dell\'utente');
   }
 }
 

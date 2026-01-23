@@ -49,7 +49,12 @@ async function handleLogin(e) {
 
     if (res.ok) {
       alert(data.message || 'Login effettuato!');
-      router.navigate('/dashboard');
+      // Redirect admin users to admin panel, regular users to dashboard
+      if (data.user && data.user.role === 'admin') {
+        router.navigate('/admin');
+      } else {
+        router.navigate('/dashboard');
+      }
     } else {
       alert(data.message || 'Errore di login');
     }

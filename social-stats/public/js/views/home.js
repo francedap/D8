@@ -71,10 +71,10 @@ async function renderHome() {
   `;
 
   // Load leaderboard data
-  loadLeaderboard();
+  loadHomeLeaderboard();
 }
 
-async function loadLeaderboard() {
+async function loadHomeLeaderboard() {
   try {
     const tbody = document.getElementById('leaderboard-body');
     const res = await fetch('/api/leaderboard/top3');

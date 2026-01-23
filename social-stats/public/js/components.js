@@ -1,7 +1,20 @@
 // components.js - Common components (navbar, footer)
 
-function renderNavbar(isLoggedIn = false) {
+async function renderNavbar(isLoggedIn = false, user = null) {
   const navbar = document.getElementById('navbar');
+  
+  // If user is not provided but isLoggedIn is true, fetch session
+  if (isLoggedIn && !user) {
+    try {
+      const res = await fetch('/api/session');
+      const data = await res.json();
+      if (data.loggedIn) {
+        user = data.user;
+      }
+    } catch (err) {
+      console.error('Error fetching session:', err);
+    }
+  }
   
   if (isLoggedIn) {
     // Logged in navbar
@@ -20,6 +33,7 @@ function renderNavbar(isLoggedIn = false) {
             <a class="bottone btn btn-outline-info" style="margin-left: 10px;" href="#/classifiche" type="button">Classifiche</a>
             <a class="bottone btn btn-outline-info" style="margin-left: 10px;" href="#/dashboard" type="button">Dashboard</a>
             <a class="bottone btn btn-outline-info" style="margin-left: 10px;" href="#/profile" type="button">Profilo</a>
+            ${user && user.role === 'admin' ? '<a class="bottone btn btn-outline-warning" style="margin-left: 10px;" href="#/admin" type="button">Admin Panel</a>' : ''}
             <a class="bottonelog btn btn-outline-info" href="#/" type="button" id="logoutBtn">Log out</a>
           </form>
         </div>

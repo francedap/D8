@@ -1,5 +1,7 @@
 node_modules/
 .env
 social_stats.db
+d8.db
+*.db
 .DS_Store
 npm-debug.log

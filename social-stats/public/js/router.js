@@ -17,7 +17,9 @@ class Router {
   // Handle route changes
   async handleRoute() {
     const hash = window.location.hash.slice(1) || '/';
-    const route = this.routes[hash] || this.routes['/'];
+    // Extract path without query parameters
+    const path = hash.split('?')[0] || '/';
+    const route = this.routes[path] || this.routes['/'];
     
     if (route) {
       this.currentRoute = hash;

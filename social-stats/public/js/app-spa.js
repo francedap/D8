@@ -46,6 +46,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderFooter();
   });
 
+  router.addRoute('/dettclassifica', async () => {
+    const sessionData = await getSessionData();
+    await renderNavbar(sessionData.loggedIn, sessionData.user);
+    await renderDettClassifica();
+    renderFooter();
+  });
+
   router.addRoute('/admin', async () => {
     const sessionData = await getSessionData();
     await renderNavbar(sessionData.loggedIn, sessionData.user);

@@ -6,19 +6,19 @@ utente con accesso admin:
 
 alcuni utenti con accesso user (accesso classico)
 
-1.
+0.
     usarname: test
     password: test
     email: test@example.com
 
-2.
+1.
     usarname: giulio
     password: giulio
     email: giulio@example.it
 
-3.
-    usarname: luca
-    password: luca
-    email: luca@example.it
+2.
+    usarname: fra
+    password: fra
+    email: fra@example.it
 
 si può tranquillamente creare un nuovo utente tramite la compilazione di username email e password all'interno della pagina signup.html
